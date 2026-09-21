@@ -28,7 +28,6 @@
   "homepage": "https://github.com/unabandoned/browserify-aes#readme",
   "dependencies": {
     "@unabandoned/hash.js": "^1.4.0",
-    "buffer-xor": "^1.0.3",
     "cipher-base": "^1.0.0",
     "inherits": "^2.0.1",
     "safe-buffer": "^5.0.1"
