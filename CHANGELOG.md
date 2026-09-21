@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.3.0...browserify-aes-v1.4.0) (2026-09-21)
+
+
+### Features
+
+* vendor buffer-xor, drop the bench harness, run on node:test ([#7](https://github.com/unabandoned/browserify-aes/issues/7)) ([1648c45](https://github.com/unabandoned/browserify-aes/commit/1648c45bf1c30eea5e13fdee47c6bca2daca42e7))
+
+
+### Dependencies & maintenance
+
+* **deps:** update dependency tape to v4.17.0 ([#3](https://github.com/unabandoned/browserify-aes/issues/3)) ([f14d943](https://github.com/unabandoned/browserify-aes/commit/f14d9437b10472df98ab301bc1ff6745c59e0bae))
+
 ## [1.3.0](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.2.0...browserify-aes-v1.3.0) (2026-09-21)
 
 
