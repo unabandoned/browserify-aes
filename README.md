@@ -1,4 +1,10 @@
-# browserify-aes
+# @unabandoned/browserify-aes
+
+> A maintained fork of [crypto-browserify/browserify-aes](https://github.com/crypto-browserify/browserify-aes),
+> which has had no release since April 2018. Published as
+> [`@unabandoned/browserify-aes`](https://www.npmjs.com/package/@unabandoned/browserify-aes);
+> the API is unchanged from upstream.
+
 [![Build Status](https://travis-ci.org/crypto-browserify/browserify-aes.svg)](https://travis-ci.org/crypto-browserify/browserify-aes)
 
 Node style aes for use in the browser.

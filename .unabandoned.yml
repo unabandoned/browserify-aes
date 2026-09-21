@@ -1,0 +1,29 @@
+schema: 1
+
+package: "@unabandoned/browserify-aes"
+
+upstream:
+  repo: crypto-browserify/browserify-aes
+  reason: "no release since 2018-04-03; its test suite has not run on a current Node for years"
+
+summary: >-
+  AES for the browser - CBC, CFB, CTR, ECB, OFB and GCM - exposed through the
+  same createCipheriv / createDecipheriv interface as Node's crypto module.
+
+why-forked: >-
+  @unabandoned/crypto-browserify depends on it, and it is reached from
+  @unabandoned/browserify-sign through parse-asn1. It was abandoned carrying
+  evp_bytestokey (2017) and a stale create-hash declaration, and its own suite
+  had stopped running: it called node:crypto's createCipher, removed in Node 22,
+  so nothing had exercised it on a current runtime - which is how a GCM bug for
+  any IV that is not 96 bits survived unnoticed.
+
+status: active
+
+used-by:
+  - consumer: "@unabandoned/crypto-browserify"
+    purpose: "Backs crypto.createCipheriv / createDecipheriv for AES."
+  - consumer: "@unabandoned/parse-asn1"
+    purpose: "Decrypts encrypted PEM private keys."
+
+tags: [crypto, aes, cipher, gcm, browser, browserify]

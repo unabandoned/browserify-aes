@@ -4,7 +4,7 @@ var MODES = require('./modes')
 var StreamCipher = require('./streamCipher')
 var Transform = require('cipher-base')
 var aes = require('./aes')
-var ebtk = require('evp_bytestokey')
+var ebtk = require('./evp_bytestokey')
 var inherits = require('inherits')
 
 function Decipher (mode, key, iv) {
