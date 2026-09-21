@@ -1,6 +1,6 @@
 {
   "name": "@unabandoned/browserify-aes",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "aes, for browserify",
   "browser": "browser.js",
   "main": "index.js",
