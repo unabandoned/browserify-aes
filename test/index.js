@@ -6,7 +6,30 @@ var _crypto = require('crypto')
 var crypto = require('../browser.js')
 var modes = require('../modes')
 var CIPHERS = Object.keys(modes)
-var ebtk = require('evp_bytestokey')
+var ebtk = require('../evp_bytestokey')
+
+// Node removed createCipher/createDecipher in v22 (deprecated since v10), which
+// made this suite unrunnable on any current Node. They were createCipheriv with
+// the key and IV derived from the password by EVP_BytesToKey — MD5, no salt —
+// which is exactly what browserify-aes does, so deriving explicitly compares
+// the same thing the legacy API did.
+function derive (algo, password) {
+  // Node's cipher names are case-insensitive; the modes table here is lowercase.
+  var mode = modes[algo.toLowerCase()]
+  var d = ebtk(password, false, mode.key, mode.iv)
+  // ECB takes no IV, and node rejects a zero-length Buffer where it wants null.
+  return { key: d.key, iv: d.iv.length ? d.iv : null }
+}
+
+function nodeCreateCipher (algo, password) {
+  var d = derive(algo, password)
+  return _crypto.createCipheriv(algo, d.key, d.iv)
+}
+
+function nodeCreateDecipher (algo, password) {
+  var d = derive(algo, password)
+  return _crypto.createDecipheriv(algo, d.key, d.iv)
+}
 
 function isGCM (cipher) {
   return modes[cipher].mode === 'GCM'
@@ -44,7 +67,7 @@ fixtures.forEach(function (f, i) {
       t.plan(3)
       var suite = crypto.createCipher(cipher, Buffer.from(f.password))
       var buf = Buffer.alloc(0)
-      var suite2 = _crypto.createCipher(cipher, Buffer.from(f.password))
+      var suite2 = nodeCreateCipher(cipher, Buffer.from(f.password))
       var buf2 = Buffer.alloc(0)
       var inbuf = Buffer.from(f.text)
       var mid = ~~(inbuf.length / 2)
@@ -83,7 +106,7 @@ fixtures.forEach(function (f, i) {
       t.plan(4)
       var suite = crypto.createDecipher(cipher, Buffer.from(f.password))
       var buf = Buffer.alloc(0)
-      var suite2 = _crypto.createDecipher(cipher, Buffer.from(f.password))
+      var suite2 = nodeCreateDecipher(cipher, Buffer.from(f.password))
       var buf2 = Buffer.alloc(0)
       var inbuf = Buffer.from(f.results.ciphers[cipher], 'hex')
       var mid = ~~(inbuf.length / 2)
@@ -364,13 +387,13 @@ fixtures2.forEach((f, i) => {
 test('autopadding false decipher', function (t) {
   t.plan(2)
   var mycipher = crypto.createCipher('AES-128-ECB', Buffer.from('password'))
-  var nodecipher = _crypto.createCipher('AES-128-ECB', Buffer.from('password'))
+  var nodecipher = nodeCreateCipher('AES-128-ECB', Buffer.from('password'))
   var myEnc = mycipher.final()
   var nodeEnc = nodecipher.final()
   t.equals(myEnc.toString('hex'), nodeEnc.toString('hex'), 'same encryption')
   var decipher = crypto.createDecipher('aes-128-ecb', Buffer.from('password'))
   decipher.setAutoPadding(false)
-  var decipher2 = _crypto.createDecipher('aes-128-ecb', Buffer.from('password'))
+  var decipher2 = nodeCreateDecipher('aes-128-ecb', Buffer.from('password'))
   decipher2.setAutoPadding(false)
   t.equals(decipher.update(myEnc).toString('hex'), decipher2.update(nodeEnc).toString('hex'), 'same decryption')
 })
@@ -380,7 +403,7 @@ test('autopadding false cipher throws', function (t) {
 
   var mycipher = crypto.createCipher('aes-128-ecb', Buffer.from('password'))
   mycipher.setAutoPadding(false)
-  var nodecipher = _crypto.createCipher('aes-128-ecb', Buffer.from('password'))
+  var nodecipher = nodeCreateCipher('aes-128-ecb', Buffer.from('password'))
   nodecipher.setAutoPadding(false)
   mycipher.update('foo')
   nodecipher.update('foo')
@@ -411,7 +434,7 @@ test('correctly handle incremental base64 output', function (t) {
 
   function encryptNode (data, key, algorithm) {
     algorithm = algorithm || 'aes256'
-    var cipher = _crypto.createCipher(algorithm, key)
+    var cipher = nodeCreateCipher(algorithm, key)
     var part1 = cipher.update(data, 'utf8', encoding)
     var part2 = cipher.final(encoding)
     return part1 + part2
@@ -522,7 +545,7 @@ function corectPaddingWords (padding, result) {
     t.plan(1)
     var block1 = Buffer.alloc(16, 4)
     result = block1.toString('hex') + result.toString('hex')
-    var cipher = _crypto.createCipher('aes128', Buffer.from('password'))
+    var cipher = nodeCreateCipher('aes128', Buffer.from('password'))
     cipher.setAutoPadding(false)
     var decipher = crypto.createDecipher('aes128', Buffer.from('password'))
     var out = Buffer.alloc(0)
@@ -541,7 +564,7 @@ function incorectPaddingthrows (padding) {
     var cipher = crypto.createCipher('aes128', Buffer.from('password'))
     cipher.setAutoPadding(false)
     var decipher = crypto.createDecipher('aes128', Buffer.from('password'))
-    var decipher2 = _crypto.createDecipher('aes128', Buffer.from('password'))
+    var decipher2 = nodeCreateDecipher('aes128', Buffer.from('password'))
     var out = Buffer.alloc(0)
     out = Buffer.concat([out, cipher.update(block1)])
     out = Buffer.concat([out, cipher.update(padding)])
@@ -563,7 +586,7 @@ function incorectPaddingDoesNotThrow (padding) {
     var cipher = crypto.createCipher('aes128', Buffer.from('password'))
     cipher.setAutoPadding(false)
     var decipher = crypto.createDecipher('aes128', Buffer.from('password'))
-    var decipher2 = _crypto.createDecipher('aes128', Buffer.from('password'))
+    var decipher2 = nodeCreateDecipher('aes128', Buffer.from('password'))
     cipher.pipe(decipher)
     cipher.pipe(decipher2)
     cipher.write(block1)

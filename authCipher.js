@@ -34,7 +34,13 @@ function calcIv (self, iv, ck) {
   ghash.update(Buffer.alloc(8, 0))
   var ivBits = len * 8
   var tail = Buffer.alloc(8)
-  tail.writeUIntBE(ivBits, 0, 8)
+  // GHASH wants the IV length as a 64-bit big-endian value. writeUIntBE tops
+  // out at 6 bytes and throws ERR_OUT_OF_RANGE for 8, so this threw for every
+  // GCM IV that was not 96 bits — the one length that skips this path entirely.
+  // Written as two 32-bit halves rather than a BigInt, to keep the bundle free
+  // of BigInt and stay on the same numeric path as the rest of this file.
+  tail.writeUInt32BE(Math.floor(ivBits / 0x100000000), 0)
+  tail.writeUInt32BE(ivBits >>> 0, 4)
   ghash.update(tail)
   self._finID = ghash.state
   var out = Buffer.from(self._finID)

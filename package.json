@@ -1,5 +1,5 @@
 {
-  "name": "browserify-aes",
+  "name": "@unabandoned/browserify-aes",
   "version": "1.2.0",
   "description": "aes, for browserify",
   "browser": "browser.js",
@@ -8,13 +8,12 @@
     "test": "test"
   },
   "scripts": {
-    "standard": "standard",
-    "unit": "node test/index.js | tspec",
-    "test": "npm run standard && npm run unit"
+    "test": "node test/index.js",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/crypto-browserify/browserify-aes.git"
+    "url": "git+https://github.com/unabandoned/browserify-aes.git"
   },
   "keywords": [
     "aes",
@@ -24,20 +23,23 @@
   "author": "",
   "license": "MIT AND BSD-3-Clause AND (BSD-2-Clause OR GPL-2.0)",
   "bugs": {
-    "url": "https://github.com/crypto-browserify/browserify-aes/issues"
+    "url": "https://github.com/unabandoned/browserify-aes/issues"
   },
-  "homepage": "https://github.com/crypto-browserify/browserify-aes",
+  "homepage": "https://github.com/unabandoned/browserify-aes#readme",
   "dependencies": {
+    "@unabandoned/hash.js": "^1.4.0",
     "buffer-xor": "^1.0.3",
     "cipher-base": "^1.0.0",
-    "create-hash": "^1.1.0",
-    "evp_bytestokey": "^1.0.3",
     "inherits": "^2.0.1",
     "safe-buffer": "^5.0.1"
   },
   "devDependencies": {
-    "standard": "^9.0.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "@commitlint/cli": "21.2.2",
+    "@commitlint/config-conventional": "21.2.2",
+    "tape": "4.6.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
