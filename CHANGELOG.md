@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.0...browserify-aes-v1.4.1) (2026-09-23)
+
+
+### Dependencies & maintenance
+
+* **deps:** update commitlint monorepo to v21.2.3 ([#8](https://github.com/unabandoned/browserify-aes/issues/8)) ([8fa1752](https://github.com/unabandoned/browserify-aes/commit/8fa1752cf0a51d223f10c6cadeeb39ec5cb3bdc6))
+
 ## [1.4.0](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.3.0...browserify-aes-v1.4.0) (2026-09-21)
 
 
