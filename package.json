@@ -1,6 +1,21 @@
 {
   "name": "@unabandoned/browserify-aes",
   "version": "1.4.1",
+  "files": [
+    "CHANGELOG.md",
+    "index.js",
+    "browser.js",
+    "aes.js",
+    "authCipher.js",
+    "decrypter.js",
+    "encrypter.js",
+    "evp_bytestokey.js",
+    "ghash.js",
+    "incr32.js",
+    "modes",
+    "streamCipher.js",
+    "xor.js"
+  ],
   "description": "aes, for browserify",
   "browser": "browser.js",
   "main": "index.js",
