@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.0...browserify-aes-v1.4.1) (2026-09-23)
+
+
+### Bug Fixes
+
+* stop dev-only commits from cutting releases ([#10](https://github.com/unabandoned/browserify-aes/issues/10)) ([6205e6c](https://github.com/unabandoned/browserify-aes/commit/6205e6c738e8c6fa3f3eb05dadff81164c995d51))
+
 ## [1.4.0](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.3.0...browserify-aes-v1.4.0) (2026-09-21)
 
 
