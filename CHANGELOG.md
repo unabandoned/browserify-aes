@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.1...browserify-aes-v1.4.2) (2026-09-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @unabandoned/hash.js to v1.4.1 ([#17](https://github.com/unabandoned/browserify-aes/issues/17)) ([ffdf27c](https://github.com/unabandoned/browserify-aes/commit/ffdf27ce8656a6b2fe8a1ae72f38c5ac1ddd7ad6))
+* **deps:** update dependency @unabandoned/hash.js to v1.4.2 ([#19](https://github.com/unabandoned/browserify-aes/issues/19)) ([8b86936](https://github.com/unabandoned/browserify-aes/commit/8b8693668c2dd9ce748d0093431e5cc29f3c416a))
+
 ## [1.4.1](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.0...browserify-aes-v1.4.1) (2026-09-23)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@unabandoned/browserify-aes",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "files": [
     "CHANGELOG.md",
     "index.js",
