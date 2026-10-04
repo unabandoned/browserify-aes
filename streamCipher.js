@@ -1,6 +1,6 @@
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
-var Transform = require('cipher-base')
+var Transform = require('./vendor/cipher-base')
 var inherits = require('inherits')
 
 function StreamCipher (mode, key, iv, decrypt) {
