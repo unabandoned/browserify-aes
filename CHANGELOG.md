@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.3...browserify-aes-v1.4.4) (2026-10-04)
+
+
+### Bug Fixes
+
+* ship the vendor directory ([#23](https://github.com/unabandoned/browserify-aes/issues/23)) ([9b84562](https://github.com/unabandoned/browserify-aes/commit/9b84562a77001782ca761c702c5662fe5f18d143))
+
 ## [1.4.3](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.2...browserify-aes-v1.4.3) (2026-10-04)
 
 
