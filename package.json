@@ -14,7 +14,8 @@
     "incr32.js",
     "modes",
     "streamCipher.js",
-    "xor.js"
+    "xor.js",
+    "vendor"
   ],
   "description": "aes, for browserify",
   "browser": "browser.js",
