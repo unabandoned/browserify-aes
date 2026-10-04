@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.2...browserify-aes-v1.4.3) (2026-10-04)
+
+
+### Bug Fixes
+
+* vendor cipher-base, taking the transitive tree to zero ([#21](https://github.com/unabandoned/browserify-aes/issues/21)) ([372ff0e](https://github.com/unabandoned/browserify-aes/commit/372ff0ee0fede1c28603b4866d9895cb92945e3e))
+
 ## [1.4.2](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.1...browserify-aes-v1.4.2) (2026-09-26)
 
 
