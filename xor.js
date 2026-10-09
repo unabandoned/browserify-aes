@@ -7,7 +7,7 @@
 // `new Buffer(length)`, which allocates uninitialised memory in old Node and
 // warns in every version since.
 
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)

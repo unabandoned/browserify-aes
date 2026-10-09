@@ -11,6 +11,7 @@
     "encrypter.js",
     "evp_bytestokey.js",
     "ghash.js",
+    "inherits.js",
     "incr32.js",
     "modes",
     "streamCipher.js",
@@ -44,8 +45,7 @@
   "homepage": "https://github.com/unabandoned/browserify-aes#readme",
   "dependencies": {
     "@unabandoned/hash.js": "^1.4.0",
-    "inherits": "^2.0.1",
-    "safe-buffer": "^5.0.1"
+    "string_decoder": "npm:@unabandoned/string_decoder@^1.4.4"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.3",

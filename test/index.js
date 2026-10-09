@@ -1,4 +1,4 @@
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 var test = require('./tape')
 var fixtures = require('./fixtures.json')
 var fixtures2 = require('./extra.json')
