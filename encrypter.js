@@ -1,11 +1,11 @@
 var MODES = require('./modes')
 var AuthCipher = require('./authCipher')
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 var StreamCipher = require('./streamCipher')
 var Transform = require('./vendor/cipher-base')
 var aes = require('./aes')
 var ebtk = require('./evp_bytestokey')
-var inherits = require('inherits')
+var inherits = require('./inherits')
 
 function Cipher (mode, key, iv) {
   Transform.call(this)

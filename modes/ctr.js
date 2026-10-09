@@ -1,5 +1,5 @@
 var xor = require('../xor')
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 var incr32 = require('../incr32')
 
 function getBlock (self) {

@@ -1,4 +1,4 @@
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)

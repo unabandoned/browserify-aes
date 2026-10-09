@@ -10,7 +10,7 @@
 // unsalted MD5 pass — and exists here only to read the ciphertexts OpenSSL
 // wrote with it.
 
-var Buffer = require('safe-buffer').Buffer
+var Buffer = require('buffer').Buffer
 var md5 = require('@unabandoned/hash.js').md5
 
 function digest (parts) {
