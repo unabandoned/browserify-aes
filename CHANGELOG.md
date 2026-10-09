@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.4...browserify-aes-v1.4.5) (2026-10-09)
+
+
+### Dependencies & maintenance
+
+* drop inherits and safe-buffer, declare string_decoder ([#26](https://github.com/unabandoned/browserify-aes/issues/26)) ([510fe78](https://github.com/unabandoned/browserify-aes/commit/510fe786beac73b9fa4e42e23e715155ca844a31))
+
 ## [1.4.4](https://github.com/unabandoned/browserify-aes/compare/browserify-aes-v1.4.3...browserify-aes-v1.4.4) (2026-10-04)
 
 
