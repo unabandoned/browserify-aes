@@ -48,8 +48,8 @@
     "string_decoder": "npm:@unabandoned/string_decoder@^1.4.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "21.2.3",
-    "@commitlint/config-conventional": "21.2.3"
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4"
   },
   "publishConfig": {
     "access": "public",
